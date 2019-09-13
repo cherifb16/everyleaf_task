@@ -2,18 +2,18 @@
 
 1. User table
 
- a. id: integer
- b. name: text
- c. type: string
- d. email: string
+  1. id: integer
+  2. name: text
+  3. type: string
+  4. email: string
 
 2. Task table
 
- a. id: integer
- b. name: string
- c. content: text
- d. user_id: integer
- e. status: string
- f. priority: integer
- g. start_date: timedate
- h. end_date: timedate
+  1. id: integer
+  2. name: string
+  3. content: text
+  4. user_id: integer
+  5. status: string
+  6. priority: integer
+  7. start_date: timedate
+  8. end_date: timedate
