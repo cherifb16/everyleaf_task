@@ -1,24 +1,19 @@
-# README
+* models with their columns and datatypes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. User table
 
-Things you may want to cover:
+ 1. id: integer
+ 2. name: text
+ 3. type: string
+ 4. email: string
 
-* Ruby version
+2. Task table
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ 1. id: integer
+ 2. name: string
+ 3. content: text
+ 4. user_id: integer
+ 5. status: string
+ 6. priority: integer
+ 7. start_date: timedate
+ 8. end_date: timedate
