@@ -17,3 +17,15 @@
   6. priority: integer
   7. start_date: timedate
   8. end_date: timedate
+
+  | Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
