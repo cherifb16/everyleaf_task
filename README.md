@@ -18,14 +18,22 @@
   7. start_date: timedate
   8. end_date: timedate
 
-  | Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
+|  User table   | 
+| ------------- |
+|  id: integer  | 
+| name: text    |
+| type: string  | 
+| email: string | 
+
+
+
+| Task table           | 
+| -------------------- |
+| id: integer          | 
+| name: string         |
+| content: text        | 
+| user_id: integer     | 
+| status: string       | 
+| priority: integer    |
+| start_date: timedate | 
+| end_date: timedate   | 
