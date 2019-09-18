@@ -1,11 +1,21 @@
 class TasksController < ApplicationController
+  helper_method :sort_direction
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order('created_at desc')
+
+    if params[:sort] == 'name'
+      @tasks = Task.all.order("form_name #{sort_direction}")
+    elsif params[:sort] == 'created_at'
+      @tasks = Task.all.order("created_at #{sort_direction}")
+    else
+      @tasks = Task.all
+    end
+
   end
+  
 
   # GET /tasks/1
   # GET /tasks/1.json
@@ -62,6 +72,9 @@ class TasksController < ApplicationController
   end
 
   private
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
