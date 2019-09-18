@@ -8,9 +8,12 @@
     <tr>
       <th>Name</th>
       <th>Details</th>
+      <th>state</th>
+      <th>priority</th>
       <th>creation_date</th>
+      <th>end_date</th>
 
-      <th colspan="3"></th>
+      <th colspan="3">ACTIONS</th>
     </tr>
   </thead>
 
@@ -19,7 +22,10 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.details %></td>
+        <td><%= task.state %></td>
+        <td><%= task.priority %></td>
         <td><%= task.created_at %></td>
+        <td><%= task.end_date %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

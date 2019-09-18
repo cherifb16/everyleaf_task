@@ -21,6 +21,19 @@
     <%= form.text_field :details %>
   </div>
 
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.text_field :priority %>
+  </div>
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date, class:"form-control"%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
