@@ -1,4 +1,16 @@
+<h3>Sort By</h3>
+<%= link_to "name", tasks_path(sort_by: "name"),class:'btn btn-primary' %>
+<%= link_to "end_date", tasks_path(sort_by: "end_date"),class:'btn btn-danger' %>
+<%= link_to "priority", tasks_path(sort_by: "priority"),class:'btn btn-danger' %>
+
+
 <p id="notice"><%= notice %></p>
+<hr>
+<%= form_tag(tasks_path, method: :get) do %>
+ <%= text_field_tag :term, params[:term] %>
+ <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 
 <h1>Tasks</h1>
 
@@ -36,6 +48,7 @@
 <br>
 
 <%= link_to 'New Task', new_task_path %>
+
 
 
 

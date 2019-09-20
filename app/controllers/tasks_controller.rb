@@ -5,10 +5,16 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = if params[:term]
+      Task.where('state LIKE ? or name LIKE ?', "%#{params[:term]}%","%#{params[:term]}%")
+    else
+      @tasks = Task.order_list(params[:sort_by])
+    end
   end
-  
 
+  def search
+    @task =task.search(params[:search])
+  end
   # GET /tasks/1
   # GET /tasks/1.json
   def show
@@ -74,6 +80,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :details, :state, :priority, :end_date)
+      params.require(:task).permit(:name, :details, :state, :priority, :end_date, :term)
     end
 end
