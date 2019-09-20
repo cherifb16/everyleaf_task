@@ -5,15 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-
-    if params[:sort] == 'name'
-      @tasks = Task.all.order("form_name #{sort_direction}")
-    elsif params[:sort] == 'created_at'
-      @tasks = Task.all.order("created_at #{sort_direction}")
-    else
-      @tasks = Task.all
-    end
-
+    @tasks = Task.all
   end
   
 
