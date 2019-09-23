@@ -13,7 +13,7 @@
 | name:string        |
 | content:text       | 
 | user_id:integer    | 
-| status:string      | 
+| state:string      | 
 | priority:integer   |
 | start_date:timedate| 
 | end_date:timedate  |

@@ -28,6 +28,7 @@ RSpec.feature "Task management function", type: :feature do
  scenario "Test task details" do
    task1=Task.create!(name: 'test_task_03', details: 'samplesample',state: 'completed',priority:'low',created_at:'2019-09-09',end_date:'2019-09-12')
    visit task_path(id: task1.id)
+   save_and_open_page
    expect(page).to have_content('test_task_03')
    expect(page).to have_content('samplesample')
  end

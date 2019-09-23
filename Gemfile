@@ -20,7 +20,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
-  gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'launchy'
 
 end
 
