@@ -12,23 +12,22 @@ RSpec.feature "Task management function", type: :feature do
  
  end
  scenario "Test task creation" do
-    # visit to new_task_path (transition to task registration page)
+   
   visit new_task_path
-  # In the input field labeled "Task Name" and in the input field labeled "Task Details"
-  # Fill in the task title and content respectively
-  fill_in  'Name' ,  with: 'completed'
-  fill_in  'Detail' ,  with: 'ruby task'
+  
+  fill_in 'Name', with: 'task'
+  fill_in 'Detail', with: 'successfully created'
   fill_in  'State' ,  with: 'completed'
   fill_in  'Priority' ,  with: 'low'
-  # Click_on a button with a value (notation letter) of “Register”
+  
   click_on  '登録する'
-  # Check if the information that is supposed to be registered by click is displayed on the task detail page
-  # (Assumption that transition to the task details screen will be made if the task is registered)
+  expect(page).to have_content('task')
+  expect(page).to have_content('successfully created')
+  
  end
  scenario "Test task details" do
    task1=Task.create!(name: 'test_task_03', details: 'samplesample',state: 'completed',priority:'low',created_at:'2019-09-09',end_date:'2019-09-12')
    visit task_path(id: task1.id)
-   save_and_open_page
    expect(page).to have_content('test_task_03')
    expect(page).to have_content('samplesample')
  end
