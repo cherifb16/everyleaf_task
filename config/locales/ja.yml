@@ -1,6 +1,5 @@
 ja:
-  view:
-    sample: king
+ 
   activerecord:
     errors:
       messages:
@@ -142,7 +141,7 @@ ja:
   helpers:
     select:
       prompt: 選択してください
-      submit:
+    submit:
       create: 登録する
       submit: 保存する
       update: 更新する
@@ -206,4 +205,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-    
+  view:
+    sample: Sample
