@@ -2,6 +2,7 @@ class Task < ApplicationRecord
     validates :name,    length: { in: 1..140 }
     validates :name,:details,:state,:priority,:end_date,presence: true
     paginates_per 3
+    belongs_to :user
     def self.search(term)
         if term
           where('name LIKE ?', "%#{term}%")
