@@ -1,0 +1,16 @@
+
+<% if logged_in? %>
+<h1><%= @user.username %> page's</h1>
+<p>email address: <%= @user.email %></p>
+<%= link_to 'View tasks', tasks_path %>
+</div>
+<div class="content-content">
+<h3><%= link_to 'View Recent Posts', posts_path %></h3>
+<% else %>
+<h1>welcome <%= @user.username %>!</h1>
+<p>email address: <%= @user.email %></p>
+<%= link_to 'Please Log In', new_session_path %>
+<% end %>
+<% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: "#{key}") %>
+ <% end %>

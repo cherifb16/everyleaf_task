@@ -9,8 +9,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
+  <% if logged_in? %>
+     <a class="nav-link" href="#" style="padding-left:30px"><%= current_user.username %><span class="sr-only">(current)</span></a>
+     <div class="first">
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Logout", session_path(current_user.id), method: :delete %></button>
+  <% else %>
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Sign up", new_user_path %></button>
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Login", new_session_path %></button>
+     </div>  
+  <% end %>
 
-  <body>
-    <%= yield %>
+
+  <body style="background-image: linear-gradient(to left, #1f4037, #99f2c8);">
+  
+  <%= yield %>
   </body>
 </html>
