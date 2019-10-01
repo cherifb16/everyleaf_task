@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#email' do
+    it { should_not allow_value("blah").for(:email) }
+    it { should allow_value("a@b.com").for(:email) }
+  end
 end
