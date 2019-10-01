@@ -8,7 +8,8 @@ class TasksController < ApplicationController
     @tasks = if params[:term]
       Task.where('state LIKE ? or name LIKE ?', "%#{params[:term]}%","%#{params[:term]}%").page params[:page]
     else
-      @tasks = Task.order_list(params[:sort_by]).page params[:page]
+      # @tasks = Task.order_list(params[:sort_by]).page params[:page]
+      @tasks = Task.order('created_at desc').page params[:page]
     end
   end
 
