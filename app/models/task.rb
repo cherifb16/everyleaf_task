@@ -7,7 +7,7 @@ class Task < ApplicationRecord
         if term
           where('name LIKE ?', "%#{term}%")
         else
-          order('id desc')
+          order('created_at desc')
         end
     end
     
