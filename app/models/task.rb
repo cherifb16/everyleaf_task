@@ -3,9 +3,11 @@ class Task < ApplicationRecord
     validates :name,:details,:state,:priority,:end_date,presence: true
     paginates_per 3
     belongs_to :user
-    def self.search(term)
+    def self.search(term,term1)
         if term
           where('name LIKE ?', "%#{term}%")
+        elsif term1
+          where('name LIKE ?', "%#{term1}%")
         else
           order('created_at desc')
         end

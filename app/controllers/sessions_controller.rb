@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       redirect_to tasks_path(user.id)
+      flash[:notice] = 'You logged in'
     else
       flash[:danger] = 'Failed to login'
       render 'new'
