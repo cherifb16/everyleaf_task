@@ -6,10 +6,12 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = if params[:term]
-      Task.where('state LIKE ? or name LIKE ?', "%#{params[:term]}%","%#{params[:term]}%").page params[:page]
+      Task.where('name LIKE ?',"%#{params[:term]}%").page params[:page]
+    elsif params[:term1]
+        Task.where('state LIKE ?', "%#{params[:term1]}%").page params[:page]      
     else
-      # @tasks = Task.order_list(params[:sort_by]).page params[:page]
-      @tasks = Task.all.order('created_at desc').page params[:page]
+      @tasks = Task.order_list(params[:sort_by]).page params[:page]
+      # @tasks = Task.all.order('created_at desc').page params[:page]
     end
   end
 
@@ -82,6 +84,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :details, :state, :priority, :end_date, :term, :user_id)
+      params.require(:task).permit(:name, :details, :state, :priority, :end_date, :term, :term1, :user_id)
     end
 end
