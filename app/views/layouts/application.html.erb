@@ -14,7 +14,7 @@
 
    
   <% if logged_in? %>
-     <a class="nav-link" href="#" style="padding-left:30px"><%= current_user.username %><span class="sr-only">(current)</span></a>
+     <a class="btn btn-outline-success my-2 my-sm-0" href="#" style="padding-left:30px"><%= current_user.email %><span class="sr-only">(current)</span></a>
      
   
      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Logout", session_path(current_user.id), method: :delete %></button>
