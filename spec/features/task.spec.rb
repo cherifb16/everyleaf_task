@@ -66,6 +66,10 @@ RSpec.feature "Task management function", type: :feature do
  scenario "Test whether tasks are arranged in descending order of creation date" do
    Task.order('created_at desc')
  end
+ scenario "Test whether tasks are arranged in descending order of deadline date" do
+  Task.order('end_date desc')
+end
+
  scenario "Test whether tasks are sorted in high order by priority" do
   Task.order('priority asc')
 end
