@@ -64,13 +64,37 @@ RSpec.feature "Task management function", type: :feature do
    expect(page).to have_content('of course')
  end
  scenario "Test whether tasks are arranged in descending order of creation date" do
-   Task.order('created_at desc')
+  @task = Task.first
+  @task_newest = Task.last
+  # @task_newest.end_date = '10.10.2020'
+  # @task_newest.save
+  #Task.order('created_at desc').all.expect == [@task_newest, @email]
+  task  = Task.order('created_at desc').all
+expect(task).to eq([@task_newest, @task])
  end
 
-scenario 'Test whether tasks are arranged in descending order of end_date' do
-  task=Task.all
-  assert task.order('end_date DESC')
+
+ scenario "Test whether tasks are arranged in descending order of deadline" do
+  # click_on 'New Task'
+  #   fill_in 'Name', with: 'suredeal'
+  #   fill_in 'Detail', with: 'of course'
+  #   fill_in  'State' ,  with: 'completed'
+  #   fill_in  'Priority' ,  with: 'low'
+  #   # fill_in  'End_date' ,  with: '10.2.2019'
+  #   # click_on '更新する'
+
+    @task = Task.first
+    @task_newest = Task.last
+    @task_newest.end_date = '10.10.2020'
+    @task_newest.save
+    
+    task  = Task.order('end_date desc').all
+  expect(task).to eq([@task_newest, @task])
 end
+# scenario 'Test whether tasks are arranged in descending order of end_date' do
+#   task=Task.all
+#   assert task.order('end_date DESC')
+# end
 scenario "Test whether tasks are sorted in high order by priority" do
   Task.order('priority asc')
  end
