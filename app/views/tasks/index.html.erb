@@ -3,7 +3,7 @@
   
   <%= form_tag(tasks_path, method: :get,class:'form-inline') do %>
   <%= text_field_tag :term, params[:term],class:'form-control mr-sm-2',placeholder:'Search by name' %>
-  <%= submit_tag 'Search', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
+  <%= submit_tag 'find', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
   <% end %>
 
   <%= form_tag(tasks_path, method: :get,class:'form-inline') do %>
