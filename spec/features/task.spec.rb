@@ -1,6 +1,5 @@
-# In this require, the feature required for Feature Spec such as Capybara are available.
 require 'rails_helper'
-# On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
+
 RSpec.feature "Task management function", type: :feature do
  background do
   User.create!( email: 'Foo@gmail.Com',  password: '123456', username: "meddy" )
@@ -49,7 +48,7 @@ RSpec.feature "Task management function", type: :feature do
    task1=Task.first
    visit task_path(id: task1.id)
    expect(page).to have_content('testtesttest')
-  #  expect(page).to have_content('sample')
+  
  end
  scenario "Test task updating" do
    task1=Task.first
@@ -66,14 +65,13 @@ RSpec.feature "Task management function", type: :feature do
  scenario "Test whether tasks are arranged in descending order of creation date" do
   @task = Task.first
   @task_newest = Task.last
-  
   task  = Task.order('created_at desc').all
   expect(task).to eq([@task_newest, @task])
  end
 
 
  scenario "Test whether tasks are arranged in descending order of deadline" do
-
+  
     @task = Task.first
     @task_newest = Task.last
     @task_newest.end_date = '10.10.2020'
@@ -82,11 +80,14 @@ RSpec.feature "Task management function", type: :feature do
     task  = Task.order('end_date desc').all
   expect(task).to eq([@task_newest, @task])
 end
-# scenario 'Test whether tasks are arranged in descending order of end_date' do
-#   task=Task.all
-#   assert task.order('end_date DESC')
-# end
+scenario "test task search" do
+  visit tasks_path
+  fill_in  'term' ,  with: 'grettings'
+  click_on 'find'
+  expect(page).to have_content('grettings')
+end
 scenario "Test whether tasks are sorted in high order by priority" do
   Task.order('priority asc')
  end
+
 end
