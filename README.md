@@ -20,19 +20,19 @@
 
 * how to deploy on github
 
-$ git init
-$ git add README.md
-$ git commit -m "first commit"
-$ git remote add origin https://github.com/cherifb16/bobby.git
-$ git push -u origin master
+###### $ git init
+###### $ git add README.md
+###### $ git commit -m "first commit"
+###### $ git remote add origin https://github.com/cherifb16/bobby.git
+###### $ git push -u origin master
 
 * how to deploy on heroku
 
-heroku login
-$ git init
-$ git add .
-$ git commit -am "make it better"
-$ git push heroku master
+###### $heroku login
+###### $ git init
+###### $ git add .
+###### $ git commit -am "make it better"
+###### $ git push heroku master
 
 
  
