@@ -28,7 +28,8 @@
 
 * how to deploy on heroku
 
-###### $heroku login
+###### $ heroku login
+###### $ heroku create
 ###### $ git init
 ###### $ git add .
 ###### $ git commit -am "make it better"

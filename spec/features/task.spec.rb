@@ -78,7 +78,9 @@ RSpec.feature "Task management function", type: :feature do
     @task_newest.save
     
     task  = Task.order('end_date desc').all
+    save_and_open_page
   expect(task).to eq([@task_newest, @task])
+  
 end
 scenario "test task search" do
   visit tasks_path
