@@ -75,7 +75,6 @@ expect(task).to eq([@task_newest, @task])
   
     @task = Task.first
     @task_newest = Task.last
-    @task_newest.end_date = '10.10.2020'
     @task_newest.save
     
     task  = Task.order('end_date desc').all
