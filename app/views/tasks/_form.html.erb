@@ -24,19 +24,19 @@
     <%= form.text_field :details %>
   </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+ <div class="field">
+  <%= form.label :state %>
+  <%= form.select(:state, options_for_select([['not started','not started'],['undertaking','undertaking'],['completed','completed']])) %>
   </div>
+
   <div class="field">
-    <%= form.label :priority %>
-    <%= form.text_field :priority %>
+  <%= form.label :priority %>
+  <%= form.select(:priority, options_for_select([['high','high'],['medium','medium'],['low','low']])) %>
   </div>
   <div class="field">
     <%= form.label :end_date %>
     <%= form.date_select :end_date, class:"form-control"%>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
