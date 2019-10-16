@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = if params[:term]
-      Task.where('name LIKE ?',"%#{params[:term]}%").page params[:page]
+      Task.where('name LIKE ? or state LIKE ?',"%#{params[:term]}%","%#{params[:term]}%").page params[:page]
     elsif params[:term1]
         Task.where('state LIKE ?', "%#{params[:term1]}%").page params[:page]      
     else

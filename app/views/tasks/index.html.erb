@@ -2,14 +2,14 @@
   <a class="nav-link active" href="#"><strong>Everyleaf Task</strong></a>
   
   <%= form_tag(tasks_path, method: :get,class:'form-inline') do %>
-  <%= text_field_tag :term, params[:term],class:'form-control mr-sm-2',placeholder:'Search by name' %>
-  <%= submit_tag 'find', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
+  <%= text_field_tag :term, params[:term],class:'form-control mr-sm-2',placeholder:'Search by name OR state' %>
+  <%= submit_tag 'search', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
   <% end %>
 
-  <%= form_tag(tasks_path, method: :get,class:'form-inline') do %>
-  <%= text_field_tag :term1, params[:term1],class:'form-control mr-sm-2',placeholder:'Search by state' %>
-  <%= submit_tag 'Search', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
-  <% end %>
+  <%# <%= form_tag(tasks_path, method: :get,class:'form-inline') do %>
+  <%# <%= text_field_tag :term1, params[:term1],class:'form-control mr-sm-2',placeholder:'Search by state' %>
+  <%# <%= submit_tag 'Search', name: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
+  <%# <% end %> 
   
 </nav>
 <hr class="border border-dark">
