@@ -12,15 +12,15 @@ RSpec.feature "Task management function", type: :feature do
   click_on 'New Task'
   fill_in  'Name' ,  with: 'grettings'
   fill_in  'Details' ,  with: 'testtesttest'
-  fill_in  'State' ,  with: 'testtesttest1'
-  fill_in  'Priority' ,  with: 'testtesttest2'
+  # fill_in  'State' ,  with: 'testtesttest1'
+  # fill_in  'Priority' ,  with: 'testtesttest2'
   click_on '登録する'
   click_on 'Back'
   click_on 'New Task'
   fill_in  'Name' ,  with: 'gre'
   fill_in  'Details' ,  with: 'sample'
-  fill_in  'State' ,  with: 'testtesttest3'
-  fill_in  'Priority' ,  with: 'testtesttest4'
+  # fill_in  'State' ,  with: 'testtesttest3'
+  # fill_in  'Priority' ,  with: 'testtesttest4'
   click_on '登録する'
   click_on 'Back'
  end
@@ -37,8 +37,8 @@ RSpec.feature "Task management function", type: :feature do
   
   fill_in 'Name', with: 'task'
   fill_in 'Details', with: 'successfully created'
-  fill_in  'State' ,  with: 'completed'
-  fill_in  'Priority' ,  with: 'low'
+  # fill_in  'State' ,  with: 'completed'
+  # fill_in  'Priority' ,  with: 'low'
   
   click_on  '登録する'
   expect(page).to have_content('task')
@@ -56,8 +56,8 @@ RSpec.feature "Task management function", type: :feature do
    visit edit_task_path(id: task1.id)
    fill_in 'Name', with: 'suredeal'
    fill_in 'Detail', with: 'of course'
-   fill_in  'State' ,  with: 'completed'
-   fill_in  'Priority' ,  with: 'low'
+  #  fill_in  'State' ,  with: 'completed'
+  #  fill_in  'Priority' ,  with: 'low'
    click_on '更新する'
    visit tasks_path
    expect(page).to have_content('suredeal')
@@ -86,7 +86,7 @@ end
 scenario "test task search" do
   visit tasks_path
   fill_in  'term' ,  with: 'grettings'
-  click_on 'find'
+  click_on 'search'
   expect(page).to have_content('grettings')
 end
 scenario "Test whether tasks are sorted in high order by priority" do
