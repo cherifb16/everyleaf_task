@@ -13,5 +13,8 @@ RSpec.describe Task, type: :model do
    task = Task.new(name: '', details: '')
    expect(task).not_to be_valid
  end
-
+ scenario "test task search " do
+ 
+  Task.all.where('name LIKE ? or state LIKE ?')
+end
 end

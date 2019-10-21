@@ -89,7 +89,10 @@ scenario "test task search" do
   expect(page).to have_content('grettings')
 end
 scenario "Test whether tasks are sorted in high order by priority" do
-  Task.order('priority asc')
+  # Task.order('priority asc')
+  task=Task.all
+  assert task.order('priority ASC')
  end
 
 end
+
