@@ -5,7 +5,7 @@
 <%= link_to 'View tasks', tasks_path %>
 </div>
 <div class="content-content">
-
+<h3><%= link_to 'View Recent taskss', tasks_path %></h3>
 <% else %>
 <h1>welcome <%= @user.username %>!</h1>
 <p>email address: <%= @user.email %></p>
