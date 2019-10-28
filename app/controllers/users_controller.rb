@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, only: [:destroy]
   def index
     @users = User.all
   end
@@ -39,17 +40,27 @@ class UsersController < ApplicationController
   #   end
   # end
   def destroy
-    if @user.id == current_user.id
-      redirect_to admin_users_url, notice: "You can not delete signed in user"
-      @admins = User.admins
-    elsif @admins == 1
-      redirect_to admin_users_url, notice: "Atleast one admin must remain!"
-    else
-      @user.destroy
-      redirect_to admin_users_url, notice: 'User was successfully destroyed.'
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'user was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
   private
+  def check_admin
+    @admins = 0
+    User.all.each do |user|
+      if user.user_type == 'admin'
+        @admins += 1
+      end
+    end
+    if @admins == 1
+      redirect_to users_path, notice: 'At leat one admin must remain'
+    else
+      @user.destroy
+      redirect_to users_url, notice: 'User has successfully destroyed'
+    end
+  end
   def set_user
     @user = User.find(params[:id])
   end
