@@ -6,4 +6,14 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  def self.admins
+    @users = User.all
+    @admins = 0
+    @users.each do |user|
+      if user.user_type == "admin"
+        @admins += 1
+      end
+    end
+    return @admins
+  end
  end
