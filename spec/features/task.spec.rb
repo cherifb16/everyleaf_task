@@ -50,6 +50,12 @@ RSpec.feature "Task management function", type: :feature do
    expect(page).to have_content('testtesttest')
   
  end
+#  scenario "Test task details" do
+#   task1=Task.first
+#   visit task_path(id: task1.id)
+#   expect(page).to have_content('testtesttest')
+ 
+# end
  scenario "Test task updating" do
    task1=Task.first
    visit edit_task_path(id: task1.id)
