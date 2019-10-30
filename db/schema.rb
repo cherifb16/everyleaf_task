@@ -15,6 +15,26 @@ ActiveRecord::Schema.define(version: 2019_10_23_094901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "label_associations", force: :cascade do |t|
+    t.bigint "label_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_label_associations_on_label_id"
+    t.index ["task_id"], name: "index_label_associations_on_task_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_labels_on_task_id"
+    t.index ["user_id"], name: "index_labels_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.string "details"
@@ -23,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_10_23_094901) do
     t.datetime "end_date"
     t.datetime "created_at", default: -> { "now()" }
     t.integer "user_id"
+    t.bigint "label_id"
+    t.index ["label_id"], name: "index_tasks_on_label_id"
+  end
+
+  create_table "tasks_labels", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_tasks_labels_on_label_id"
+    t.index ["task_id"], name: "index_tasks_labels_on_task_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +65,11 @@ ActiveRecord::Schema.define(version: 2019_10_23_094901) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "label_associations", "labels"
+  add_foreign_key "label_associations", "tasks"
+  add_foreign_key "labels", "tasks"
+  add_foreign_key "labels", "users"
+  add_foreign_key "tasks", "labels"
+  add_foreign_key "tasks_labels", "labels"
+  add_foreign_key "tasks_labels", "tasks"
 end

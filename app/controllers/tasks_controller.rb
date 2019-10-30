@@ -8,7 +8,10 @@ class TasksController < ApplicationController
     @tasks = if params[:term]
       Task.where('name LIKE ? or state LIKE ?',"%#{params[:term]}%","%#{params[:term]}%").page params[:page]
     elsif params[:term1]
-        Task.where('state LIKE ?', "%#{params[:term1]}%").page params[:page]      
+        Task.where('state LIKE ?', "%#{params[:term1]}%").page params[:page]  
+    elsif params[:term3]
+      Task.joins(:labels)
+      .where("labels.title ILIKE ?", "%#{params[:term3]}%").page params[:page]        
     else
       @tasks = Task.order_list(params[:sort_by]).page params[:page]
       # @tasks = Task.all.order('created_at desc').page params[:page]
@@ -27,6 +30,8 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.user_id = current_user.id
+    @task.labels.build
+    @task.tasks_labels.build
   end
 
   # GET /tasks/1/edit
@@ -38,6 +43,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
+    @labels= Label.all
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -84,6 +90,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :details, :state, :priority, :end_date, :term, :term1, :user_id)
+      params.require(:task).permit(:name, :details, :state, :priority, :end_date, :term, :term1, :user_id, label_ids: [])
     end
 end

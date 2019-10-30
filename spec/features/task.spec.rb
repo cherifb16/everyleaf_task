@@ -93,6 +93,27 @@ scenario "Test whether tasks are sorted in high order by priority" do
   task=Task.all
   assert task.order('priority ASC')
  end
-
+ scenario "test task search by atached labels " do
+  visit labels_path
+  click_on 'New Label'
+  fill_in 'Title', with: 'label title1'
+  fill_in 'Content', with: 'label content1'
+  click_on '登録する'
+  visit labels_path
+  click_on 'New Label'
+  fill_in 'Title', with: 'label title2'
+  fill_in 'Content', with: 'label content2'
+  click_on '登録する'
+  @task = Task.first
+  @label1 = Label.first
+  @label2 = Label.last
+  @task.labels = [@label1,@label2]
+  @task.save
+  
+  visit tasks_path
+  fill_in  'term3' ,  with: 'label title1'
+  click_on '  Search'
+  expect(page).to have_content('grettings')
+end
 end
 

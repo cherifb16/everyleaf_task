@@ -1,0 +1,26 @@
+<nav class="nav">
+  <a class="nav-link active" href="#"><strong>Everyleaf Task</strong></a>
+  
+</nav>
+<hr class="border border-dark">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @label.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @label.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @label.user.username %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_label_path(@label) %> |
+<%= link_to 'Back', labels_path %>
