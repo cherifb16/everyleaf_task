@@ -37,6 +37,15 @@
     <%= form.label :end_date %>
     <%= form.date_select :end_date, class:"form-control"%>
   </div>
+  <div class = "tables">
+  <% Label.all.each do |label| %>
+    <%= form.label:title, label.title %>
+  <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+  
+  <% end %>
+  
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

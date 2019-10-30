@@ -1,6 +1,5 @@
-# In this require, the feature required for Feature Spec such as Capybara are available.
 require 'rails_helper'
-# On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
+
 RSpec.feature "Task management function", type: :feature do
  background do
   User.create!( email: 'Foo@gmail.Com',  password: '123456', username: "meddy" )
@@ -49,8 +48,14 @@ RSpec.feature "Task management function", type: :feature do
    task1=Task.first
    visit task_path(id: task1.id)
    expect(page).to have_content('testtesttest')
-  #  expect(page).to have_content('sample')
+  
  end
+#  scenario "Test task details" do
+#   task1=Task.first
+#   visit task_path(id: task1.id)
+#   expect(page).to have_content('testtesttest')
+ 
+# end
  scenario "Test task updating" do
    task1=Task.first
    visit edit_task_path(id: task1.id)
@@ -67,7 +72,7 @@ RSpec.feature "Task management function", type: :feature do
   @task = Task.first
   @task_newest = Task.last
   task  = Task.order('created_at desc').all
-expect(task).to eq([@task_newest, @task])
+  expect(task).to eq([@task_newest, @task])
  end
 
 
@@ -94,6 +99,27 @@ scenario "Test whether tasks are sorted in high order by priority" do
   task=Task.all
   assert task.order('priority ASC')
  end
-
+ scenario "test task search by atached labels " do
+  visit labels_path
+  click_on 'New Label'
+  fill_in 'Title', with: 'label title1'
+  fill_in 'Content', with: 'label content1'
+  click_on '登録する'
+  visit labels_path
+  click_on 'New Label'
+  fill_in 'Title', with: 'label title2'
+  fill_in 'Content', with: 'label content2'
+  click_on '登録する'
+  @task = Task.first
+  @label1 = Label.first
+  @label2 = Label.last
+  @task.labels = [@label1,@label2]
+  @task.save
+  
+  visit tasks_path
+  fill_in  'term3' ,  with: 'label title1'
+  click_on '  Search'
+  expect(page).to have_content('grettings')
+end
 end
 

@@ -15,6 +15,25 @@
 <hr class="border border-dark">
 
 <div class="card-body">
+<h1>Labels</h1>
+<div style= "float:right; margin-top:0%; display:block; background-color:white">
+ <p>
+<p> <h2>Available Labels</h2>
+<% Label.all.each do |label| %>
+<ul>
+<li class = "user-tasks">
+Title:<%= label.title %>
+
+</li>
+</ul>
+
+<% end %>
+</p>
+</div>
+<%= form_tag(tasks_path, method: :get,style:'') do %>
+  <%= text_field_tag :term3, params[:term3],placeholder:'  search label title' %>
+  <%= submit_tag '  Search', name: nil %>
+ <% end %><br>
 <p id="notice"><%= notice %></p>
 </br>
 </br>
@@ -31,6 +50,8 @@
       <th scope="col">Details</th>
       <th scope="col">state</th>
       <th scope="col">priority</th>
+      <th>Number of labels attached</th>
+      
       <th scope="col">user_email</th>
       <th scope="col">creation_date</th>
       <th scope="col">end_date</th>
@@ -46,6 +67,7 @@
         <td><%= task.details %></td>
         <td><%= task.state %></td>
         <td><%= task.priority %></td>
+        <td><%= task.labels.size %></td>
         <td><%= task.user.email %></td>
         <td><%= task.created_at %></td>
         <td><%= task.end_date %></td>

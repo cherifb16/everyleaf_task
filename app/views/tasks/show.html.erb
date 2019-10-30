@@ -1,7 +1,8 @@
 <nav class="nav">
-  <a class="nav-link active" href="#"><strong>Everyleaf Task</strong></a> 
+  <a class="nav-link active" href="#"><strong>Everyleaf Task</strong></a>
+  
 </nav>
-
+<hr class="border border-dark">
 <p id="notice"><%= notice %></p>
 </hr class="border border-dark">
 <p>
@@ -25,6 +26,17 @@
   <strong>end_date:</strong>
   <%= @task.end_date %>
 </p>
+<p> <h2> Labels attached to this task</h2>
+<% @task.labels.each do |label| %>
+<ul>
+<li class = "user-tasks">
+Title:<%= label.title + '       ' %> <br/>Content:<%= label.content %>
+</li>
+</ul>
+
+<% end %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
