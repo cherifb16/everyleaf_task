@@ -11,7 +11,7 @@ RSpec.feature "Task management function", type: :feature do
  scenario "Test user list" do
    expect(page).to have_content 'peter'
    visit admin_users_path
-   save_and_open_page
+  #  save_and_open_page
  end
  scenario "Test user details" do
    @user = User.first
